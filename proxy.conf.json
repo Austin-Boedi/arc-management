@@ -1,0 +1,9 @@
+{
+    "/": {
+      "target": "http://localhost:8100",
+      "secure": false,
+      "headers": {
+        "Content-Security-Policy": "default-src * data: blob: 'unsafe-inline' 'unsafe-eval'; script-src * data: blob: 'unsafe-inline' 'unsafe-eval'; style-src * data: blob: 'unsafe-inline'; img-src * data: blob:; font-src * data:; connect-src * data: blob:; media-src * data: blob:; frame-src *;"
+      }
+    }
+  }

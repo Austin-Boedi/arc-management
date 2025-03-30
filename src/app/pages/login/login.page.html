@@ -1,27 +1,25 @@
-<ion-content class="ion-padding">
+<ion-content fullscreen>
   <div class="login-wrapper">
-    <div class="login-logo" style="text-align: center; margin-bottom: 32px;">
-      <img src="assets/logo-transparent-png.png" alt="ARC Logo" class="logo-img" />
+    <div class="login-container">
+      <form [formGroup]="loginForm" (ngSubmit)="login()">
+        <ion-item>
+          <ion-label position="floating">Email</ion-label>
+          <ion-input type="email" formControlName="email"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="floating">Password</ion-label>
+          <ion-input type="password" formControlName="password"></ion-input>
+        </ion-item>
+
+        <ion-button class="sign-in-btn" expand="block" type="submit">
+          Sign In
+        </ion-button>
+
+        <ion-text color="danger" *ngIf="errorMessage">
+          <p class="ion-padding">{{ errorMessage }}</p>
+        </ion-text>
+      </form>
     </div>
-
-    <form (ngSubmit)="login()" [formGroup]="loginForm">
-      <ion-item>
-        <ion-label class="hide-label-on-focus" position="floating">Email</ion-label>
-        <ion-input formControlName="email" type="email"></ion-input>
-      </ion-item>
-
-      <ion-item>
-        <ion-label class="hide-label-on-focus" position="floating">Password</ion-label>
-        <ion-input formControlName="password" type="password"></ion-input>
-      </ion-item>
-
-      <ion-button class="sign-in-btn" type="submit" [disabled]="loginForm.invalid">
-        Sign In
-      </ion-button>
-
-      <ion-text color="danger" *ngIf="errorMessage">
-        <p class="ion-padding">{{ errorMessage }}</p>
-      </ion-text>
-    </form>
   </div>
 </ion-content>

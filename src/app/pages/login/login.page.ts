@@ -1,11 +1,12 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { Auth } from '@angular/fire/auth';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import { Router } from '@angular/router';
-import { IonicModule } from '@ionic/angular';
+import { IonicModule, Platform } from '@ionic/angular';
 import { CommonModule } from '@angular/common';
 import { doc, getDoc, Firestore } from '@angular/fire/firestore';
+import { Keyboard } from '@capacitor/keyboard';
 
 @Component({
   selector: 'app-login',
@@ -19,7 +20,7 @@ import { doc, getDoc, Firestore } from '@angular/fire/firestore';
     ReactiveFormsModule
   ]
 })
-export class LoginPage {
+export class LoginPage implements OnInit {
   loginForm: FormGroup;
   errorMessage: string | null = null;
 
@@ -27,11 +28,31 @@ export class LoginPage {
     private fb: FormBuilder,
     private auth: Auth,
     private firestore: Firestore,
-    private router: Router
+    private router: Router,
+    private platform: Platform
   ) {
     this.loginForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', Validators.required],
+    });
+  }
+
+  ngOnInit() {
+    // Only initialize keyboard handling on native platforms (iOS/Android)
+    if (this.platform.is('ios') || this.platform.is('android')) {
+      this.initializeKeyboard();
+    }
+  }
+
+  initializeKeyboard() {
+    // Listen for the input field being focused to show the keyboard
+    document.addEventListener('focusin', () => {
+      Keyboard.show();
+    });
+
+    // Hide the keyboard when tapping outside the input fields
+    document.addEventListener('click', () => {
+      Keyboard.hide();
     });
   }
 
