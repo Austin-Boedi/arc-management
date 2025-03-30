@@ -58,28 +58,32 @@ export class LoginPage implements OnInit {
 
   async login() {
     const { email, password } = this.loginForm.value;
-  
+
     try {
       const userCredential = await signInWithEmailAndPassword(this.auth, email, password);
       const uid = userCredential.user.uid;
-  
+
       // Fetch role from Firestore
       const docRef = doc(this.firestore, 'users', uid);
       const docSnap = await getDoc(docRef);
-  
+
       if (docSnap.exists()) {
         const role = docSnap.data()['role'];
-  
+
+        // Optional: Cache the role
+        localStorage.setItem('userRole', role);
+
         // Navigate based on role
         switch (role) {
-          case 'user':
-            this.router.navigate(['/tabs/user-home']);
+          case 'developer':
+          case 'dev':
+            this.router.navigate(['/tabs/dev-home']);
             break;
           case 'manager':
             this.router.navigate(['/tabs/manager-home']);
             break;
-          case 'dev':
-            this.router.navigate(['/tabs/dev-home']);
+          case 'user':
+            this.router.navigate(['/tabs/user-home']);
             break;
           default:
             this.errorMessage = 'Unknown user role.';
@@ -90,5 +94,5 @@ export class LoginPage implements OnInit {
     } catch (error: any) {
       this.errorMessage = error.message;
     }
-  }  
+  }
 }
