@@ -1,0 +1,88 @@
+/*
+ARC-Management
+login.page.scss
+Boedigheimer, Austin
+Lead Engineer
+3/29/25
+*/
+
+ion-content {
+    background: #1a1a1a url('/assets/logo-transparent-png.png') no-repeat center top;
+    background-size: contain;
+    background-position: center top;
+    background-repeat: no-repeat;
+    background-attachment: scroll;
+  }
+  
+  ion-item {
+    --padding-start: 0;
+    --inner-padding-end: 0;
+    margin: 12px auto;
+    max-width: 400px;
+    width: 90%;
+    border-radius: 8px;
+    justify-content: center;
+    text-align: center;
+  }
+  
+  ion-input {
+    text-align: center;
+  }
+  
+  ion-label {
+    width: 100%;
+    text-align: center;
+    justify-content: center;
+  }
+  
+  // Hide label when field is focused
+  ion-item:focus-within .hide-label-on-focus {
+    display: none;
+  }
+  
+  .sign-in-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 24px auto 12px;
+    padding: 0 24px;
+    height: 44px;
+    font-size: 16px;
+    border-radius: 8px;
+    width: fit-content;
+    max-width: 200px;
+  }
+  
+  .login-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 160px 16px 0; // top padding to make room for logo background
+  }
+  
+  @media screen and (max-width: 480px) {
+    ion-item {
+      max-width: 100%;
+      width: 100%;
+    }
+  
+    .sign-in-btn {
+      font-size: 14px;
+      padding: 0 16px;
+    }
+  }
+  
+  @media screen and (min-width: 768px) {
+    .login-wrapper {
+      padding: 200px 32px 0;
+    }
+  
+    .sign-in-btn {
+      min-width: 160px;
+      font-size: 17px;
+    }
+  }  

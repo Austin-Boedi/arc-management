@@ -20,6 +20,18 @@ const routes: Routes = [
         loadChildren: () => import('../tab3/tab3.module').then(m => m.Tab3PageModule)
       },
       {
+        path: 'user-home',
+        loadChildren: () => import('./user-home/user-home.module').then(m => m.UserHomePageModule)
+      },
+      {
+        path: 'manager-home',
+        loadChildren: () => import('./manager-home/manager-home.module').then(m => m.ManagerHomePageModule)
+      },
+      {
+        path: 'dev-home',
+        loadChildren: () => import('./dev-home/dev-home.module').then(m => m.DevHomePageModule)
+      },
+      {
         path: '',
         redirectTo: '/tabs/tab1',
         pathMatch: 'full'
