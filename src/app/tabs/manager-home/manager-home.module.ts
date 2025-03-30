@@ -8,8 +8,8 @@ import { RouterModule } from '@angular/router';
   imports: [
     CommonModule,
     IonicModule,
-    RouterModule.forChild([{ path: '', component: ManagerHomePage }])  // Ensure ManagerHomePage is the right component
-  ],
-  declarations: [ManagerHomePage]
+    RouterModule.forChild([{ path: '', component: ManagerHomePage }]),
+    ManagerHomePage  // Import standalone component instead of declaring it
+  ]
 })
 export class ManagerHomePageModule {}

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { Auth } from '@angular/fire/auth';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import { Router } from '@angular/router';
@@ -9,6 +9,7 @@ import { doc, getDoc, Firestore } from '@angular/fire/firestore';
 
 @Component({
   selector: 'app-login',
+  standalone: true,
   templateUrl: './login.page.html',
   styleUrls: ['./login.page.scss'],
   imports: [

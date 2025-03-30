@@ -8,8 +8,8 @@ import { RouterModule } from '@angular/router';
   imports: [
     CommonModule,
     IonicModule,
-    RouterModule.forChild([{ path: '', component: DevHomePage }])  // Ensure DevHomePage is the right component
-  ],
-  declarations: [DevHomePage]
+    RouterModule.forChild([{ path: '', component: DevHomePage }]),
+    DevHomePage  // ✅ Import standalone component instead of declaring it
+  ]
 })
 export class DevHomePageModule {}

@@ -5,7 +5,7 @@ import { RouterModule } from '@angular/router';
 
 // Import the components for each page
 import { DevHomePage } from './dev-home/dev-home.page';
-import { ManagerHomePage } from './manager-home/manager-home.page';  // Import the ManagerHomePage
+import { ManagerHomePage } from './manager-home/manager-home.page';
 import { UserHomePage } from './user-home/user-home.page';
 
 @NgModule({
@@ -14,10 +14,12 @@ import { UserHomePage } from './user-home/user-home.page';
     IonicModule,
     RouterModule.forChild([
       { path: 'dev-home', component: DevHomePage },
-      { path: 'manager-home', component: ManagerHomePage },  // Use imported ManagerHomePage here
+      { path: 'manager-home', component: ManagerHomePage },
       { path: 'user-home', component: UserHomePage }
-    ])
-  ],
-  declarations: [DevHomePage, ManagerHomePage, UserHomePage]  // Declare the components here
+    ]),
+    DevHomePage,
+    ManagerHomePage,
+    UserHomePage
+  ]
 })
 export class TabsPageModule {}
