@@ -1,19 +1,23 @@
-import { IonicModule } from '@ionic/angular';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { IonicModule } from '@ionic/angular';
+import { RouterModule } from '@angular/router';
 
-import { TabsPageRoutingModule } from './tabs-routing.module';
-
-import { TabsPage } from './tabs.page';
+// Import the components for each page
+import { DevHomePage } from './dev-home/dev-home.page';
+import { ManagerHomePage } from './manager-home/manager-home.page';  // Import the ManagerHomePage
+import { UserHomePage } from './user-home/user-home.page';
 
 @NgModule({
   imports: [
-    IonicModule,
     CommonModule,
-    FormsModule,
-    TabsPageRoutingModule
+    IonicModule,
+    RouterModule.forChild([
+      { path: 'dev-home', component: DevHomePage },
+      { path: 'manager-home', component: ManagerHomePage },  // Use imported ManagerHomePage here
+      { path: 'user-home', component: UserHomePage }
+    ])
   ],
-  declarations: [TabsPage]
+  declarations: [DevHomePage, ManagerHomePage, UserHomePage]  // Declare the components here
 })
 export class TabsPageModule {}

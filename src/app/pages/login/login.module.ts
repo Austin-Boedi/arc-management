@@ -11,8 +11,8 @@ import { RouterModule } from '@angular/router';
     FormsModule,
     ReactiveFormsModule,
     IonicModule,
-    RouterModule.forChild([{ path: '', component: LoginPage }])  // Ensure LoginPage is the right component
+    RouterModule.forChild([{ path: '', component: LoginPage }])  // Correct routing here
   ],
-  declarations: [LoginPage]
+  declarations: [LoginPage]  // Declare LoginPage here
 })
 export class LoginPageModule {}
