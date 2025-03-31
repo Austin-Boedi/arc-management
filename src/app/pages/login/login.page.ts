@@ -73,26 +73,13 @@ export class LoginPage implements OnInit {
         // Optional: Cache the role
         localStorage.setItem('userRole', role);
 
-        // Navigate based on role
-        switch (role) {
-          case 'developer':
-          case 'dev':
-            this.router.navigate(['/tabs/dev-home']);
-            break;
-          case 'manager':
-            this.router.navigate(['/tabs/manager-home']);
-            break;
-          case 'user':
-            this.router.navigate(['/tabs/user-home']);
-            break;
-          default:
-            this.errorMessage = 'Unknown user role.';
-        }
+        // Navigate to shared dynamic home route
+        this.router.navigate(['/tabs/home']);
       } else {
         this.errorMessage = 'No user data found.';
       }
     } catch (error: any) {
       this.errorMessage = error.message;
     }
-  }
+  }  
 }

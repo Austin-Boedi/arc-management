@@ -9,6 +9,7 @@ Lead Engineer
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { authGuard } from './guards/auth.guard';
+import { IonicModule } from '@ionic/angular';
 
 const routes: Routes = [
   {
@@ -18,28 +19,28 @@ const routes: Routes = [
   },
   {
     path: 'login',
-    loadChildren: () => import('./pages/login/login.module').then(m => m.LoginPageModule)
+    loadComponent: () => import('./pages/login/login.page').then(m => m.LoginPage)
   },
   {
     path: 'tabs',
     canActivate: [authGuard],
-    loadChildren: () => import('./tabs/tabs.module').then(m => m.TabsPageModule)
+    loadComponent: () => import('./tabs/tabs.page').then(m => m.TabsPage)
+  },
+  {
+    path: 'home',
+    loadComponent: () => import('./pages/home/home.page').then(m => m.HomePage)
+  },
+  {
+    path: 'inventory',
+    loadComponent: () => import('./pages/inventory/inventory.page').then(m => m.InventoryPage)
+  },
+  {
+    path: 'settings',
+    loadComponent: () => import('./pages/settings/settings.page').then(m => m.SettingsPage)
   },
   {
     path: '**',
     redirectTo: 'login'
-  },
-  {
-    path: 'home',
-    loadChildren: () => import('./pages/home/home.module').then( m => m.HomePageModule)
-  },
-  {
-    path: 'inventory',
-    loadChildren: () => import('./pages/inventory/inventory.module').then( m => m.InventoryPageModule)
-  },
-  {
-    path: 'settings',
-    loadChildren: () => import('./pages/settings/settings.module').then( m => m.SettingsPageModule)
   }
 ];
 

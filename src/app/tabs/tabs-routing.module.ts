@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { TabsPage } from './tabs.page';
+import { IonicModule } from '@ionic/angular';
 
 const routes: Routes = [
   {
@@ -9,33 +10,33 @@ const routes: Routes = [
     children: [
       {
         path: 'home',
-        loadChildren: () =>
-          import('../pages/home/home.module').then(m => m.HomePageModule),
+        loadComponent: () =>
+          import('../pages/home/home.page').then(m => m.HomePage),
       },
       {
         path: 'inventory',
-        loadChildren: () =>
-          import('../pages/inventory/inventory.module').then(m => m.InventoryPageModule),
+        loadComponent: () =>
+          import('../pages/inventory/inventory.page').then(m => m.InventoryPage),
       },
       {
         path: 'settings',
-        loadChildren: () =>
-          import('../pages/settings/settings.module').then(m => m.SettingsPageModule),
+        loadComponent: () =>
+          import('../pages/settings/settings.page').then(m => m.SettingsPage),
       },
       {
         path: 'user-home',
-        loadChildren: () =>
-          import('./user-home/user-home.module').then(m => m.UserHomePageModule),
+        loadComponent: () =>
+          import('./user-home/user-home.page').then(m => m.UserHomePage),
       },
       {
         path: 'manager-home',
-        loadChildren: () =>
-          import('./manager-home/manager-home.module').then(m => m.ManagerHomePageModule),
+        loadComponent: () =>
+          import('./manager-home/manager-home.page').then(m => m.ManagerHomePage),
       },
       {
         path: 'dev-home',
-        loadChildren: () =>
-          import('./dev-home/dev-home.module').then(m => m.DevHomePageModule),
+        loadComponent: () =>
+          import('./dev-home/dev-home.page').then(m => m.DevHomePage),
       },
       {
         path: '',
