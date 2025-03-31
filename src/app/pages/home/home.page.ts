@@ -10,10 +10,11 @@ import { CommonModule } from '@angular/common';
   imports: [IonicModule, CommonModule],
 })
 export class HomePage implements OnInit {
+  role: string | null = null;
 
-  constructor() { }
+  constructor() {}
 
   ngOnInit() {
+    this.role = localStorage.getItem('userRole');
   }
-
 }
