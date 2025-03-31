@@ -1,16 +1,17 @@
 <ion-tabs>
+  <ion-router-outlet></ion-router-outlet>
   <ion-tab-bar slot="bottom">
-    <ion-tab-button tab="home">
+    <ion-tab-button tab="home" href="/tabs/home">
       <ion-icon name="home-outline"></ion-icon>
       <ion-label>Home</ion-label>
     </ion-tab-button>
 
-    <ion-tab-button tab="inventory">
+    <ion-tab-button tab="inventory" href="/tabs/inventory">
       <ion-icon name="cube-outline"></ion-icon>
       <ion-label>Inventory</ion-label>
     </ion-tab-button>
 
-    <ion-tab-button tab="settings">
+    <ion-tab-button tab="settings" href="/tabs/settings">
       <ion-icon name="settings-outline"></ion-icon>
       <ion-label>Settings</ion-label>
     </ion-tab-button>

@@ -10,3 +10,5 @@ import { CommonModule } from '@angular/common';
   imports: [IonicModule, CommonModule],
 })
 export class TabsPage {}
+
+console.log('[TabsPage] Loaded');

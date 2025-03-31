@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule, FormsModule } from '@angular/forms';
-import { Auth } from '@angular/fire/auth';
+import { Auth, onAuthStateChanged } from '@angular/fire/auth';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import { Router } from '@angular/router';
 import { IonicModule, Platform } from '@ionic/angular';
@@ -38,19 +38,16 @@ export class LoginPage implements OnInit {
   }
 
   ngOnInit() {
-    // Only initialize keyboard handling on native platforms (iOS/Android)
     if (this.platform.is('ios') || this.platform.is('android')) {
       this.initializeKeyboard();
     }
   }
 
   initializeKeyboard() {
-    // Listen for the input field being focused to show the keyboard
     document.addEventListener('focusin', () => {
       Keyboard.show();
     });
 
-    // Hide the keyboard when tapping outside the input fields
     document.addEventListener('click', () => {
       Keyboard.hide();
     });
@@ -63,23 +60,31 @@ export class LoginPage implements OnInit {
       const userCredential = await signInWithEmailAndPassword(this.auth, email, password);
       const uid = userCredential.user.uid;
 
-      // Fetch role from Firestore
       const docRef = doc(this.firestore, 'users', uid);
       const docSnap = await getDoc(docRef);
 
       if (docSnap.exists()) {
-        const role = docSnap.data()['role'];
+        const data = docSnap.data();
+        const role: any = data['role'];
 
-        // Optional: Cache the role
+        console.log('User role:', role);
         localStorage.setItem('userRole', role);
 
-        // Navigate to shared dynamic home route
-        this.router.navigate(['/tabs/home']);
+        switch (role) {
+          case 'user':
+          case 'manager':
+          case 'dev':
+            console.log('Navigating to /tabs');
+            this.router.navigateByUrl('/tabs');
+            break;
+          default:
+            this.errorMessage = 'Unknown user role: ' + role;
+        }
       } else {
         this.errorMessage = 'No user data found.';
       }
     } catch (error: any) {
       this.errorMessage = error.message;
     }
-  }  
+  }
 }

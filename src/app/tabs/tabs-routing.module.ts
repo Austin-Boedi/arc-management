@@ -1,12 +1,13 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { TabsPage } from './tabs.page';
-import { IonicModule } from '@ionic/angular';
+import { authGuard } from '../guards/auth.guard';
 
 const routes: Routes = [
   {
     path: '',
     component: TabsPage,
+    canActivateChild: [authGuard],
     children: [
       {
         path: 'home',
