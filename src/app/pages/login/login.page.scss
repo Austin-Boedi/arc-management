@@ -71,3 +71,52 @@ ion-button.sign-in-btn:hover::part(native) {
     transform: translateY(0);
   }
 }
+
+// Responsive enhancements for small screens
+@media (max-width: 480px) {
+  ion-content {
+    background-size: 100%;
+  }
+
+  .login-container {
+    padding: 1.5rem;
+  }
+
+  ion-item {
+    --padding-start: 16px;
+    --inner-padding-end: 16px;
+    font-size: 1.1rem;
+  }
+
+  ion-input,
+  ion-label {
+    font-size: 1.1rem;
+  }
+
+  ion-button.sign-in-btn::part(native) {
+    padding: 16px 28px;
+    font-size: 1.1rem;
+  }
+}
+
+/* Fix autofill yellow background */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+select:-webkit-autofill {
+  box-shadow: 0 0 0 1000px rgba(255, 255, 255, 0.1) inset !important;
+  -webkit-box-shadow: 0 0 0 1000px rgba(255, 255, 255, 0.1) inset !important;
+  -webkit-text-fill-color: #fff !important;
+  transition: background-color 9999s ease-in-out 0s !important;
+  caret-color: white;
+}
+
+/* Also override autofill on native shadow DOM input inside ion-input */
+ion-input::part(native) {
+  box-shadow: 0 0 0 1000px rgba(255, 255, 255, 0.1) inset !important;
+  -webkit-box-shadow: 0 0 0 1000px rgba(255, 255, 255, 0.1) inset !important;
+  -webkit-text-fill-color: #fff !important;
+  transition: background-color 9999s ease-in-out 0s !important;
+  caret-color: white;
+}
