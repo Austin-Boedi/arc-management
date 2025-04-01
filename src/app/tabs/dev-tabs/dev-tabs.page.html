@@ -1,0 +1,21 @@
+<ion-tabs>
+    <!-- The child routes render here -->
+    <ion-router-outlet></ion-router-outlet>
+  
+    <ion-tab-bar slot="bottom">
+      <ion-tab-button tab="analytics" href="/dev-tabs/analytics">
+        <ion-icon name="stats-chart-outline"></ion-icon>
+        <ion-label>Analytics</ion-label>
+      </ion-tab-button>
+  
+      <ion-tab-button tab="home" href="/dev-tabs/home">
+        <ion-icon name="home-outline"></ion-icon>
+        <ion-label>Home</ion-label>
+      </ion-tab-button>
+  
+      <ion-tab-button tab="tools" href="/dev-tabs/tools">
+        <ion-icon name="hammer-outline"></ion-icon>
+        <ion-label>Tools</ion-label>
+      </ion-tab-button>
+    </ion-tab-bar>
+  </ion-tabs>  

@@ -7,7 +7,9 @@ import { CommonModule } from '@angular/common';
   standalone: true,
   templateUrl: './home.page.html',
   styleUrls: ['./home.page.scss'],
-  imports: [IonicModule, CommonModule],
+  imports: [
+    IonicModule,
+    CommonModule],
 })
 export class HomePage implements OnInit {
   role: string | null = null;

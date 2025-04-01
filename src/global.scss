@@ -35,3 +35,157 @@
 /* @import "@ionic/angular/css/palettes/dark.always.css"; */
 /* @import "@ionic/angular/css/palettes/dark.class.css"; */
 @import "@ionic/angular/css/palettes/dark.system.css";
+
+// global styles for arc
+ion-content, ion-tabs {
+    --background: none;
+    background: url('/assets/logo-transparent-png.png') no-repeat center center fixed;
+    background-size: 60%;
+  }
+  
+  .login-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+  
+  .login-container {
+    background-color: transparent;
+    padding: 2rem;
+    border-radius: 1rem;
+    width: 90%;
+    max-width: 400px;
+  }
+  
+  ion-item {
+    --background: rgba(255, 255, 255, 0.2);
+    --border-radius: 12px;
+    --padding-start: 12px;
+    --inner-padding-end: 12px;
+    margin: 12px 0;
+    backdrop-filter: blur(8px);
+    border: none;
+    animation: fadeSlideIn 2s ease-out forwards;
+  }
+  
+  ion-input {
+    text-align: center;
+    color: #fff;
+  }
+  
+  ion-label {
+    width: 100%;
+    text-align: center;
+    justify-content: center;
+    color: #fff;
+  }
+  
+  ion-button.sign-in-btn::part(native) {
+    border-radius: 12px;
+    padding: 12px 24px;
+    transition: all 0.3s ease;
+    animation: fadeSlideIn 2s ease-out forwards;
+    opacity: 0;
+  }
+  
+  ion-button.sign-in-btn:hover::part(native) {
+    background: rgba(0, 123, 255, 0.85);
+    box-shadow: 0 6px 20px rgba(0, 123, 255, 0.4);
+  }
+  
+  @keyframes fadeSlideIn {
+    0% {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  // Responsive enhancements for small screens
+  @media (max-width: 480px) {
+    ion-content {
+      background-size: 100%;
+    }
+  
+    .login-container {
+      padding: 1.5rem;
+    }
+  
+    ion-item {
+      --padding-start: 16px;
+      --inner-padding-end: 16px;
+      font-size: 1.1rem;
+    }
+  
+    ion-input,
+    ion-label {
+      font-size: 1.1rem;
+    }
+  
+    ion-button.sign-in-btn::part(native) {
+      padding: 16px 28px;
+      font-size: 1.1rem;
+    }
+  }
+  
+  /* Fix autofill yellow background */
+  input:-webkit-autofill,
+  input:-webkit-autofill:hover,
+  input:-webkit-autofill:focus,
+  textarea:-webkit-autofill,
+  select:-webkit-autofill {
+    box-shadow: 0 0 0 1000px rgba(255, 255, 255, 0.1) inset !important;
+    -webkit-box-shadow: 0 0 0 1000px rgba(255, 255, 255, 0.1) inset !important;
+    -webkit-text-fill-color: #fff !important;
+    transition: background-color 9999s ease-in-out 0s !important;
+    caret-color: white;
+  }
+  
+  ion-input::part(native) {
+    box-shadow: 0 0 0 1000px rgba(255, 255, 255, 0.1) inset !important;
+    -webkit-box-shadow: 0 0 0 1000px rgba(255, 255, 255, 0.1) inset !important;
+    -webkit-text-fill-color: #fff !important;
+    transition: background-color 9999s ease-in-out 0s !important;
+    caret-color: white;
+  }
+
+  ion-tab-bar {
+    --background: rgba(255, 255, 255, 0.1);
+    --color: #ffffff;
+    --border: none;
+  
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+  
+    border-top: 1px solid rgba(255, 255, 255, 0.15);
+    box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.2);
+    padding-bottom: env(safe-area-inset-bottom);
+    transition: background 0.3s ease;
+  }
+  
+  ion-tab-bar ion-tab-button {
+    --color: #fff;
+    --color-selected: #00bfff;
+    transition: all 0.3s ease;
+  }
+  
+  ion-tab-bar ion-tab-button:hover {
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(14px);
+  }
+  
+  ion-tab-bar ion-tab-button.ion-selected {
+    transform: scale(1.1);
+    filter: drop-shadow(0 0 4px #00bfff);
+  }
+  

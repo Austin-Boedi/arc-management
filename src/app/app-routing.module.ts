@@ -1,15 +1,7 @@
-/*
-ARC-Management
-app-routing.module.ts
-Boedigheimer, Austin
-Lead Engineer
-3/29/25
-*/
-
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { authGuard } from './guards/auth.guard';
-import { IonicModule } from '@ionic/angular';
+import { devTabRoutes } from './tabs/dev-tabs/dev-tabs-routing.module';
 
 const routes: Routes = [
   {
@@ -25,6 +17,11 @@ const routes: Routes = [
     path: 'tabs',
     canActivate: [authGuard],
     loadComponent: () => import('./tabs/tabs.page').then(m => m.TabsPage)
+  },
+  {
+    path: 'dev-tabs',
+    canActivate: [authGuard],
+    children: devTabRoutes
   },
   {
     path: 'home',

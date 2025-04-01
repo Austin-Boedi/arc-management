@@ -72,14 +72,20 @@ export class LoginPage implements OnInit {
 
         switch (role) {
           case 'user':
-          case 'manager':
-          case 'dev':
             console.log('Navigating to /tabs');
             this.router.navigateByUrl('/tabs');
             break;
+          case 'manager':
+            console.log('Navigating to /manager-home');
+            this.router.navigateByUrl('/manager-home');
+            break;
+          case 'dev':
+            console.log('Navigating to /dev-tabs');
+            this.router.navigateByUrl('/dev-tabs');
+            break;
           default:
             this.errorMessage = 'Unknown user role: ' + role;
-        }
+        }        
       } else {
         this.errorMessage = 'No user data found.';
       }

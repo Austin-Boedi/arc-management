@@ -3,26 +3,27 @@
 import { inject } from '@angular/core';
 import { CanActivateFn, Router } from '@angular/router';
 import { Auth, onAuthStateChanged } from '@angular/fire/auth';
-import { Observable } from 'rxjs';
 
-export const authGuard: CanActivateFn = (): Observable<boolean> => {
+export const authGuard: CanActivateFn = async () => {
   const auth = inject(Auth);
   const router = inject(Router);
 
-  return new Observable<boolean>((subscriber) => {
+  const user = await new Promise((resolve) => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
-      console.log('[AuthGuard] Fired. User:', user);
-      if (user) {
-        subscriber.next(true);
-      } else {
-        console.log('[AuthGuard] No user.')
-        router.navigate(['/login']);
-        subscriber.next(false);
-      }
-      subscriber.complete();
+      resolve(user);
+      unsubscribe();
     });
-
-    // Clean up listener on unsubscribe
-    return { unsubscribe };
   });
+
+  const cachedRole = localStorage.getItem('userRole');
+  console.log('[AuthGuard] Checked. Firebase user:', user);
+  console.log('[AuthGuard] Cached role:', cachedRole);
+
+  if (user || cachedRole) {
+    return true;
+  } else {
+    console.log('[AuthGuard] No user or role found — redirecting');
+    router.navigate(['/login']);
+    return false;
+  }
 };
