@@ -2,15 +2,16 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { IonicModule } from '@ionic/angular';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-analytics',
   standalone: true,
   templateUrl: './analytics.page.html',
-  styleUrls: ['./analytics.page.scss'],
   imports: [
     IonicModule,
-    CommonModule
+    CommonModule,
+    RouterModule
   ]
 })
 export class AnalyticsPage {}

@@ -13,8 +13,3 @@ export const environment = {
     measurementId: "G-5F14W1HLFK"
   }
 };
-
-// Optional: Firebase initialization (used only if needed in this context)
-
-const app = initializeApp(environment.firebase);
-const analytics = getAnalytics(app);
