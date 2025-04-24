@@ -11,8 +11,6 @@ import { provideAuth, getAuth } from '@angular/fire/auth';
 import { provideFirestore, getFirestore } from '@angular/fire/firestore';
 import { environment } from './environments/environment';
 
-import { getAnalytics, isSupported } from 'firebase/analytics';
-
 bootstrapApplication(AppComponent, {
   providers: [
     provideHttpClient(),
@@ -24,10 +22,10 @@ bootstrapApplication(AppComponent, {
     provideAuth(() => getAuth()),
     provideFirestore(() => getFirestore()),
   ],
-}).then(() => {
-  isSupported().then((supported) => {
-    if (supported) {
-      getAnalytics();
-    }
-  });
+}).then(async () => {
+  // Delay analytics until Firebase is fully initialized
+  const { isSupported, getAnalytics } = await import('firebase/analytics');
+  if (await isSupported()) {
+    getAnalytics();
+  }
 }).catch(err => console.error(err));

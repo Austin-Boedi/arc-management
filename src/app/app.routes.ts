@@ -14,6 +14,11 @@ export const routes: Routes = [
     loadComponent: () => import('./pages/login/login.page').then(m => m.LoginPage)
   },
   {
+    path: 'debug-button',
+    loadComponent: () =>
+      import('./pages/debug-button.page').then(m => m.DebugButtonPage)
+  },
+  {
     path: 'tabs',
     canActivate: [authGuard],
     loadComponent: () => import('./tabs/tabs.page').then(m => m.TabsPage)

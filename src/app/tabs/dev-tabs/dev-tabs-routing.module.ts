@@ -1,5 +1,3 @@
-// src/app/tabs/dev-tabs/dev-tabs-routing.module.ts
-
 import { Routes } from '@angular/router';
 import { DevTabsPage } from './dev-tabs.page';
 
@@ -16,7 +14,7 @@ export const devTabRoutes: Routes = [
       {
         path: 'analytics',
         loadChildren: () =>
-          import('../../dev-analytics/dev-analytics-routing.module').then(m => m.DevAnalyticsRoutingModule),
+          import('../../dev-analytics/dev-analytics.routes').then(m => m.devAnalyticsRoutes), // updated
       },
       {
         path: 'tools',

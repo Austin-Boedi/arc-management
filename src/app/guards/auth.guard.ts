@@ -10,6 +10,7 @@ export const authGuard: CanActivateFn = async () => {
 
   const user = await new Promise((resolve) => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
+      console.log('[AuthGuard] onAuthStateChanged fired. User:', user); // Debug log
       resolve(user);
       unsubscribe();
     });

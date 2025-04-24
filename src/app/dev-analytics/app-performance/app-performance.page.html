@@ -7,6 +7,18 @@
 <ion-content class="ion-padding">
   <h2>Load Time Metrics</h2>
 
+  <ion-card *ngIf="sessionInfo">
+    <ion-card-header>
+      <ion-card-title>Session Info</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <p><strong>User ID:</strong> {{ sessionInfo.uid }}</p>
+      <p><strong>Platform:</strong> {{ sessionInfo.platform }}</p>
+      <p><strong>User Agent:</strong> {{ sessionInfo.userAgent }}</p>
+      <p><strong>Timestamp:</strong> {{ sessionInfo.timestamp | date: 'medium' }}</p>
+    </ion-card-content>
+  </ion-card>
+
   <ion-card>
     <ion-card-header>
       <ion-card-title>Average Load Time</ion-card-title>
@@ -29,6 +41,15 @@
     </ion-card-content>
   </ion-card>
 
-  <ion-button expand="block" (click)="addTestLoadTime()">
-  </ion-button>
+  <button (click)="addTestLoadTime()">Test Native Button Click</button>
+
+  <ion-card class="ion-margin-top">
+    <ion-card-header>
+      <ion-card-title>Chart: Load Time Bar & Line View</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <canvas id="barChart"></canvas>
+      <canvas id="lineChart" class="ion-margin-top"></canvas>
+    </ion-card-content>
+  </ion-card>
 </ion-content>
